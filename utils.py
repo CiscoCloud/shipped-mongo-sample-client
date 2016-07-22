@@ -11,7 +11,7 @@ client = None
 
 def dbConnection():
     deployTarget = os.environ.get('DEPLOY_TARGET')
-    constr = os.environ.get('HOST_MONGODB')
+    constr = os.environ.get('HOST_MONGODB_SINGLE')
     for i in range(0, 10):
         if i > 0:
             print("DB connection attempt %d of 10 failed; retrying (%s) connect string (%s)", i)
