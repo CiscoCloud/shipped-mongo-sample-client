@@ -1,0 +1,91 @@
+<html>
+<head>
+	<title>Shipped Three-Tier Demo Application</title>
+	
+	<style>
+		body{
+			padding:20px;
+			font-family:arial;
+			color:#808080;
+		}
+		.content{
+			width:980px;
+			margin:auto;
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+<div class="content">
+    <img src="/static/shipped.png" width="100px" />
+	<h3>Shipped Three-Tier Demo Application</h3>
+	<br/>
+	<p>Cisco Shipped has <span id="counter">{{count}}</span> <span id="likes">likes.</span></p>
+	<br><br>
+
+	<input type="submit" value="Like Cisco Shipped" id="btnLike"/>
+    <input type="submit" value="Reset Counter" id="btnReset"/>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+       	$.ajax({
+           url: "/count",
+           type: 'GET',
+           success: function(data) {
+             	showCount('{{count}}');
+           },
+           error: function(request, error) {
+            	console.log("count endpoint failed: " + error);
+           }
+         });
+
+	})
+
+	$("#btnLike").click(function(){
+       	$.ajax({
+           url: "/like",
+           type: 'POST',
+           success: function(data) {
+             	showCount('{{count}}');
+				location.reload();
+           },
+           error: function(request, error) {
+            	console.log("like endpoint failed: " + error);
+           }
+         });
+	});
+
+   	$("#btnReset").click(function(){
+       	$.ajax({
+           url: "/reset",
+           type: 'POST',
+           success: function(data) {
+             	showCount('{{count}}');
+				location.reload();
+           },
+           error: function(request, error) {
+            	console.log("reset endpoint failed: " + error);
+           }
+         });
+	});
+
+	function showCount(count) {
+		switch(count) {
+			case 0:
+        		$("#counter").html("no");
+				$("#likes").html("likes.")
+				break
+			case 1:
+        		$("#counter").html(count);
+				$("#likes").html("like.")
+				break
+			default:
+        		$("#counter").html(count);
+				$("#likes").html("likes.")
+				break
+		}
+	}
+</script>
+</body>
+</html>
