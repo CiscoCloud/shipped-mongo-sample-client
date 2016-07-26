@@ -3,7 +3,7 @@ from bson import ObjectId
 import os
 
 
-MONGODB_URI = "mongodb://mongodb:27017/mongo"
+MONGODB_URI = "mongodb://mongodb:27017@/mongo"
 
 SEED_DATA = [{'counter':0}]
 id = ""
@@ -16,7 +16,7 @@ def dbConnection():
         if i > 0:
             print("DB connection attempt %d of 10 failed; retrying (%s) connect string (%s)", i)
 
-        # ex: "mongodb://mongodb:27017/mongo?sslmode=disable"
+        # ex: "mongodb://mongodb:27017@admin:mongo/mongo?sslmode=disable"
         if deployTarget == "LOCAL_SANDBOX":
             constr = MONGODB_URI
 
