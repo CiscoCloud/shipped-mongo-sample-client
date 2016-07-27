@@ -3,7 +3,7 @@ from bson import ObjectId
 import os
 
 
-MONGODB_URI = "mongodb://mongodb:27017@/mongo"
+MONGODB_URI = "mongodb://mongodb:27017@admin:mongo/mongo"
 
 SEED_DATA = [{'counter':0}]
 id = ""
