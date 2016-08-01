@@ -44,7 +44,7 @@ Deploy Mongo :
 1> Click the Deployment tab.      
 2> Select Mongo and the environment (Test), click Deploy Build.      
  ![](static/s6.PNG)     
-As we need connection string to connect our API to Postgres DB, So we need to copy the environment variable name "HOST_MONGODB_SINGLE" (naming convention "HOST"$servicename) of Postgress, which you need to set for shipped-mongo-sample-client.       
+As we need connection string to connect our API to Mongo DB, So we need to copy the environment variable name "HOST_MONGODB_SINGLE" (naming convention "HOST"$servicename) of Mongo, which you need to set for shipped-mongo-sample-client.       
 3> Click Settings.      
 4> Scroll down to the Deployment Configurations section.     
  ![](static/s7.PNG)     
