@@ -30,10 +30,10 @@
 <script>
 	$(document).ready(function() {
        	$.ajax({
-           url: "/count",
+           url: "/",
            type: 'GET',
            success: function(data) {
-             	showCount('{{count}}');
+             	
            },
            error: function(request, error) {
             	console.log("count endpoint failed: " + error);
@@ -47,8 +47,7 @@
            url: "/like",
            type: 'POST',
            success: function(data) {
-             	showCount('{{count}}');
-				location.reload();
+             	$("#counter").html(data);
            },
            error: function(request, error) {
             	console.log("like endpoint failed: " + error);
@@ -61,8 +60,7 @@
            url: "/reset",
            type: 'POST',
            success: function(data) {
-             	showCount('{{count}}');
-				location.reload();
+             	$("#counter").html(data);
            },
            error: function(request, error) {
             	console.log("reset endpoint failed: " + error);
@@ -70,22 +68,7 @@
          });
 	});
 
-	function showCount(count) {
-		switch(count) {
-			case 0:
-        		$("#counter").html("no");
-				$("#likes").html("likes.")
-				break
-			case 1:
-        		$("#counter").html(count);
-				$("#likes").html("like.")
-				break
-			default:
-        		$("#counter").html(count);
-				$("#likes").html("likes.")
-				break
-		}
-	}
+	
 </script>
 </body>
 </html>
